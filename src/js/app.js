@@ -2,13 +2,29 @@ document.addEventListener("DOMContentLoaded", function (){
     const inputTask = document.querySelector("#form1");
 
     const saveBTN = document.querySelector("div .btn");
-    const deleteBTN = document.querySelector(".btn-danger");
-    const finishBTN = document.querySelector(".btn-success")
+    //const deleteBTN = document.querySelector(".btn-danger");
+    //const finishBTN = document.querySelector(".btn-success")
 
 
     const tBody = document.querySelector("tbody")
     const tr = tBody.querySelector("tr");
     const tDs = tr.querySelectorAll("td");
+
+    //delegatura zadan
+    tBody.addEventListener("click", function (ev){
+        const clicked = ev.target;
+
+        if(ev.target.classList.contains("btn-danger")){
+            ev.target.closest("tr").remove();
+        }
+
+        if(ev.target.classList.contains("btn-success")){
+            const tmp = ev.target.closest("tr");
+            const changeStatus = tmp.children[2];
+            changeStatus.textContent = "Finished";
+        }
+
+    })
 
     saveBTN.addEventListener("click", function (ev){
         ev.preventDefault();
@@ -28,17 +44,21 @@ document.addEventListener("DOMContentLoaded", function (){
         tBody.appendChild(newTask);
     })
 
-    deleteBTN.addEventListener("click", function (ev){
-        ev.preventDefault();
+    //poprzednie podejscie
+    // deleteBTN.addEventListener("click", function (ev){
+    //     ev.preventDefault();
+    //
+    //     this.closest("tr").remove();
+    // })
 
-        this.closest("tr").remove();
-    })
 
-    finishBTN.addEventListener("click", function (ev) {
-        ev.preventDefault();
+    //poprzednie podejscie z zdarzeniem na kazdy element rozpatrywany
+    // finishBTN.addEventListener("click", function (ev) {
+    //     ev.preventDefault();
+    //
+    //     const tmp = this.closest("tr");
+    //     const changeStatus = tmp.querySelectorAll("td")[1];
+    //     changeStatus.textContent = "Finished";
+    // })
 
-        const tmp = this.closest("tr");
-        const changeStatus = tmp.querySelectorAll("td")[1];
-        changeStatus.textContent = "Finished";
-    })
 })
