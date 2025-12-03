@@ -1,9 +1,15 @@
 document.addEventListener("DOMContentLoaded", function (){
     const inputTask = document.querySelector("#form1");
 
-    const saveBTN = document.querySelector("div .btn");
+    const saveBTN = document.querySelector("#addBTN");
     //const deleteBTN = document.querySelector(".btn-danger");
-    //const finishBTN = document.querySelector(".btn-success")
+    //const finishBTN = document.querySelector(".btn-success");
+
+    const token = localStorage.getItem("token");
+
+    if (!token){
+        window.location.href = "login.html";
+    }
 
 
     const tBody = document.querySelector("tbody")
@@ -11,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function (){
     const tDs = tr.querySelectorAll("td");
 
     //delegatura zadan
+    //zmiana statusu zadania oraz usuniecie
     tBody.addEventListener("click", function (ev){
         const clicked = ev.target;
 
@@ -26,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function (){
 
     })
 
+    //zapisywanie nowego zadania
     saveBTN.addEventListener("click", function (ev){
         ev.preventDefault();
         const ctr = tBody.querySelectorAll("tr").length;
@@ -44,6 +52,14 @@ document.addEventListener("DOMContentLoaded", function (){
         tBody.appendChild(newTask);
     })
 
+    const logOutBTN = document.querySelector("#logOutBTN");
+
+    logOutBTN.addEventListener("click", ev=>{
+        localStorage.removeItem("token");
+        window.location.href = "login.html";
+    })
+    const greetingDiv = document.querySelector("#userGreeting");
+    greetingDiv.textContent = `Witaj, ${localStorage.getItem("email")}`;
     //poprzednie podejscie
     // deleteBTN.addEventListener("click", function (ev){
     //     ev.preventDefault();

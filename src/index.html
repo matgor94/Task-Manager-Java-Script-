@@ -19,6 +19,7 @@
                     <div class="card-body p-4">
 
                         <h4 class="text-center my-3 pb-3">To Do App</h4>
+                        <div id="userGreeting" class="text-end p-2"></div>
 
                         <form class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
                             <div class="col-12">
@@ -29,12 +30,16 @@
                             </div>
 
                             <div class="col-12">
-                                <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">Add</button>
+                                <button type="submit" id="addBTN" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">Add</button>
                             </div>
 
                             <div class="col-12">
                                 <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-warning">Get tasks</button>
                             </div>
+                            <div class="col-12">
+                                <button type="submit" id="logOutBTN" data-mdb-button-init data-mdb-ripple-init class="btn p-2.2 mb-2.5 bg-dark text-white">Log out</button>
+                            </div>
+
                         </form>
 
                         <table class="table mb-4">
